@@ -18,7 +18,9 @@
   <textarea id="body_field" name="body" cols="20" rows="3"></textarea></div>
 
   <div><label for="expires_on_field">Expires on</label>
-  <input id="expires_on_field" type="date" name="expires"></div>
+  <input id="expires_on_field" type="date" name="expires_on"></div>
+
+  <input id="board_id_field" type="hidden" name="board_id" value = <%= @the_board.id %>>
 
   <button>Add post</button>
 </form>
