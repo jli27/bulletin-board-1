@@ -23,27 +23,23 @@
   <button>Add post</button>
 </form>
   
+<h2>Active posts</h2>
+<% matching_posts = Post.where({ :board_id => @the_board.id }) %>
 
-<div>
-  <div>
-    <h2>
-      Edit board
-    </h2>
-
-    <form action="/modify_board/<%= @the_board.id %>"  method="post" >
-      <div>
-        <label for="name_box">
-          Name
-        </label>
-
-        <input type="text" id="name_box" name="query_name" value="<%= @the_board.name %>">
-      </div>
-
-      <button>
-        Update board
-      </button>
-    </form>
-  </div>
-</div>
-
-<hr>
+<table border="1">
+  <tr>
+    <td>Title</td>
+    <td>Body</td>
+    <td>Posted on</td>
+    <td>Expires on</td>
+  </tr>
+  
+  <% matching_posts.each do |a_post| %>
+    <tr>
+      <td><%= a_post.title %></td>
+      <td><%= a_post.body %></td>
+      <td><%= a_post.created_at.strftime("%b %e, %Y") %></td>
+      <td><%= a_post.expires_on.strftime("%b %e, %Y") %></td>
+    </tr>
+  <% end %>
+</table>
